@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Invitación 9 de Julio - Escuela Técnica N°5</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(#d0eaff, #ffffff);
+      color: #0b3d91;
+      text-align: center;
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      background-color: #007cc2;
+      color: white;
+      padding: 20px 10px;
+      animation: slideDown 1s ease-out;
+    }
+
+    @keyframes slideDown {
+      from { transform: translateY(-100px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    .logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .logos img {
+      width: 100px;
+      height: auto;
+      transition: transform 0.3s;
+    }
+
+    .logos img:hover {
+      transform: scale(1.1);
+    }
+
+    main {
+      padding: 30px 20px;
+    }
+
+    .invitacion {
+      background-color: #f0f8ff;
+      border: 2px solid #007cc2;
+      border-radius: 10px;
+      padding: 25px;
+      max-width: 600px;
+      margin: 0 auto;
+      animation: fadeIn 2.5s ease-in;
+    }
+
+    .invitacion h2 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+
+    .invitacion p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .contador {
+      margin-top: 25px;
+      font-size: 1.5em;
+      font-weight: bold;
+      background-color: #e1f5fe;
+      border: 2px dashed #007cc2;
+      padding: 15px;
+      border-radius: 8px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #007cc2;
+      color: white;
+    }
+
+    footer img {
+      width: 60px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>¡Festejemos el 9 de Julio!</h1>
+    <div class="logos">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Bandera Argentina">
+      <img src="98C5E533-FC25-40F2-9912-9C5DC5DF26AC.png" alt="Logo Escuela Técnica N°5">
+    </div>
+  </header>
+
+  <main>
+    <section class="invitacion">
+      <h2>Invitación a la comunidad educativa</h2>
+      <p>
+        Con motivo del Día de la Independencia Argentina, invitamos a toda la comunidad educativa a participar de la fiesta que se realizará el <strong>jueves 4 de julio</strong> en la <strong>Escuela Técnica N°5</strong>.
+      </p>
+      <p>
+        ¡Los esperamos para compartir juntos una jornada llena de historia, cultura y emoción patria!
+      </p>
+      <p>🇦🇷 ¡Viva la patria! 🇦🇷</p>
+
+      <div class="contador" id="contador">
+        Cargando contador...
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Escuela Técnica N°5 · 2025
+    <br>
+    <img src="98C5E533-FC25-40F2-9912-9C5DC5DF26AC.png" alt="Logo Escuela Técnica N°5">
+  </footer>
+
+  <script>
+    function actualizarContador() {
+      const evento = new Date("2025-07-04T00:00:00");
+      const ahora = new Date();
+      const diferencia = evento - ahora;
+
+      if (diferencia <= 0) {
+        document.getElementById("contador").textContent = "¡Hoy es el gran día!";
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById("contador").textContent =
+        `Faltan ${dias} días, ${horas} horas, ${minutos} minutos y ${segundos} segundos`;
+    }
+
+    actualizarContador();
+    setInterval(actualizarContador, 1000);
+  </script>
+
+</body>
+</html>
